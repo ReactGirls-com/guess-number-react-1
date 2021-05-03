@@ -1,18 +1,21 @@
-import React from "react";
-
-const playSteps = [
-  { id: 1, text: "Guess the secret number between 0 and 100." },
-  { id: 2, text: "If you guess incorrect number, you will get a hint." },
-  { id: 3, text: "If you guess correct number, you win!" },
-];
+import React, { useState, useEffect } from "react";
 
 const HowToPlaySection = () => {
+  const [steps, setSteps] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/playSteps")
+      .then((response) => response.json())
+      .then((json) => setSteps(json))
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <div className="mainSection">
       <h2>How to play</h2>
       <ul>
-        {playSteps.map((step) => {
-          return <li>{step.text}</li>;
+        {steps.map((step) => {
+          return <li key={step.id}>{step.text}</li>;
         })}
       </ul>
     </div>

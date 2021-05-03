@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Button from "./components/Button";
 import HowToPlaySection from "./containers/HowToPlaySection";
 import SecretNumberSection from "./containers/SecretNumberSection";
+import Test from "./Test";
 
 const App = () => {
-  const [value, setValue] = React.useState(null);
+  const [value, setValue] = useState(null);
+
   const range = [0, 100];
   const [randomNumber, guessedValues] = React.useMemo(
     () => [getRandomNumber(range[0], range[1]), []],
@@ -29,21 +31,9 @@ const App = () => {
     setValue("");
   }
 
-
   const lastGuessedNumber = guessedValues.length
     ? guessedValues[guessedValues.length - 1]
     : null;
-
-  // zobrazeni message v zavislosti na tipovaném čísle - první varianta
-
-  // const message =
-  //   guessedValues.length === 0
-  //     ? welcomeMessage
-  //     : lastGuessedNumber < randomNumber
-  //     ? tooSmallMessage
-  //     : lastGuessedNumber > randomNumber
-  //     ? tooBigMessage
-  //     : winningMessage;
 
   // zobrazeni message v zavislosti na tipovaném čísle - druhá varianta
   const messageSecond = () => {
@@ -60,10 +50,9 @@ const App = () => {
   return (
     <div className="App">
       <div className="alert">
-        <p id="guessMessage">
-          {messageSecond()}
-        </p>
+        <p id="guessMessage">{messageSecond()}</p>
       </div>
+      <Test />
       <header>
         <h1 id="headline">Can you guess the secret number?</h1>
       </header>

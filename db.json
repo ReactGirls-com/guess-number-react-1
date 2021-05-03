@@ -1,0 +1,16 @@
+{
+  "playSteps": [
+    {
+      "id": 1,
+      "text": "Guess the secret number between 0 and 100."
+    },
+    {
+      "id": 2,
+      "text": "If you guess incorrect number, you will get a hint."
+    },
+    {
+      "id": 3,
+      "text": "If you guess correct number, you win!"
+    }
+  ]
+}

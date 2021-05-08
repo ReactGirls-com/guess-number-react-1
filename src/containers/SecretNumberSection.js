@@ -1,24 +1,24 @@
 import React from "react";
-import hvezda from "./../hvezda.svg";
+import Star from "../components/Star";
 
-const SecretNumberSection = ({ value }) => {
+const SecretNumberSection = ({ value, minValue, maxValue }) => {
   return (
     <div className="mainSection">
       <h2>Secret Number</h2>
       <div className="secretNumber">
         <p className="symbol number rightAligned" id="minRange">
-          0
+          {minValue}
         </p>
         <p className="symbol arrow">&lt;</p>
         <div className="star">
-          <img src={hvezda} alt="hvezda" />
+          <Star />
           <p className="symbol" id="mysteryNumber">
             {value}
           </p>
         </div>
         <p className="symbol arrow">&lt;</p>
         <p className="symbol number" id="maxRange">
-          100
+          {maxValue}
         </p>
       </div>
     </div>

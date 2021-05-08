@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const HowToPlaySection = () => {
+const usePlaySteps = () => {
   const [steps, setSteps] = useState([]);
 
   useEffect(() => {
@@ -9,6 +9,12 @@ const HowToPlaySection = () => {
       .then((json) => setSteps(json))
       .catch((error) => console.log(error));
   }, []);
+
+  return steps;
+};
+
+const HowToPlaySection = () => {
+  const steps = usePlaySteps();
 
   return (
     <div className="mainSection">
